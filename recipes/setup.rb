@@ -3,5 +3,14 @@ package 'tree' do
 end
 
 file '/etc/motd' do
-	content "Property of Oswaldo\n"
+	content "Property of Oswaldo\n
+	IPADDRESS:	#{node['ipaddress']}
+	HOSTNAME:	#{node['hostname']}
+	MEMORY:		#{node['memory']['total']}
+	CPU:		#{node['cpu']['0']['mhz']}
+"
+	mode '0644'
+	owner 'root'
+	group 'root'
 end	
+
